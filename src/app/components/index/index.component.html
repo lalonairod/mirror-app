@@ -1,0 +1,48 @@
+<mat-drawer-container class="menu-container" hasBackdrop="true">
+    <mat-drawer-content>
+        <mat-toolbar color="primary">
+            <button mat-icon-button aria-label="Menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <img alt="" src="https://media.tenor.com/1Qah7X4zx3oAAAAi/neon-cat-rainbow.gif" height="50px" width="100px">
+            <span class="div-spacer"></span>
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon">
+                <mat-icon>search</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+        </mat-toolbar>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+      
+        <div class="col-lg-5">
+          <h1><span>P</span><span>E</span><span>R</span><span>S</span><span>O</span>
+              <span>N</span><span>A</span><span>J</span><span>E</span><span>S</span>
+              <span>!</span></h1>
+          <label>Ingresa el nombre del personaje: </label>
+          <input type="text" class="form-control fs-4" name="character" placeholder="Name" 
+                 [(ngModel)]="character" (input)="searchCharacter()">
+        </div><br>
+
+        <div *ngIf="character$ | async as characters">
+            <mat-card class="character-card" *ngFor="let character of characters.results">
+                <mat-card-header>
+                    <mat-card-title>{{character.name}}</mat-card-title>
+                    <mat-card-subtitle>{{character.species}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="character.image" alt="">
+                <br>
+            </mat-card><br>     
+        </div>
+
+    </div>
+</div>
+  
+        
+  
+        
+
